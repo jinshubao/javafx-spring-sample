@@ -30,12 +30,11 @@ public class MainApp extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
-		MainController controller = context.getBean(MainController.class);
 		loader.setControllerFactory(new Callback<Class<?>, Object>() {
 
 			@Override
 			public Object call(Class<?> param) {
-				return controller;
+				return context.getBean(param);
 			}
 		});
 		Parent root = loader.load(getClass().getResourceAsStream("/fxml/Scene.fxml"));
